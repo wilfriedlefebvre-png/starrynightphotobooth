@@ -28,6 +28,14 @@
     {
       "source": "/company-events/",
       "destination": "/company-events/index.html"
+    },
+    {
+      "source": "/private-parties",
+      "destination": "/private-parties/index.html"
+    },
+    {
+      "source": "/private-parties/",
+      "destination": "/private-parties/index.html"
     }
   ]
 }
