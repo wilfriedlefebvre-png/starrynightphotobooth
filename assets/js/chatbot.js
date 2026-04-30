@@ -10,6 +10,13 @@
     '    <button class="sn-chat-close" type="button" aria-label="Close chat">✕</button>' +
     "  </div>" +
     '  <div class="sn-chat-messages" id="sn-chat-messages"></div>' +
+    '  <div class="sn-chat-quick" id="sn-chat-quick">' +
+    '    <button class="sn-quick-btn" type="button">Pricing</button>' +
+    '    <button class="sn-quick-btn" type="button">Check availability</button>' +
+    '    <button class="sn-quick-btn" type="button">Wedding packages</button>' +
+    '    <button class="sn-quick-btn" type="button">Corporate events</button>' +
+    '    <button class="sn-quick-btn" type="button">Call now</button>' +
+    "  </div>" +
     '  <form class="sn-chat-form" id="sn-chat-form">' +
     '    <input class="sn-chat-input" id="sn-chat-input" type="text" placeholder="Ask about pricing, packages, or booking..." autocomplete="off" />' +
     '    <button class="sn-chat-send" type="submit">Send</button>' +
@@ -25,6 +32,7 @@
   var form = document.getElementById("sn-chat-form");
   var input = document.getElementById("sn-chat-input");
   var messages = document.getElementById("sn-chat-messages");
+  var quick = document.getElementById("sn-chat-quick");
 
   function addMessage(text, who) {
     var row = document.createElement("div");
@@ -74,6 +82,13 @@
     toggle.hidden = false;
   }
 
+  function handleUserMessage(text) {
+    addMessage(text, "user");
+    window.setTimeout(function () {
+      addMessage(botReply(text), "bot");
+    }, 250);
+  }
+
   toggle.addEventListener("click", openChat);
   closeBtn.addEventListener("click", closeChat);
 
@@ -81,11 +96,15 @@
     e.preventDefault();
     var text = input.value.trim();
     if (!text) return;
-    addMessage(text, "user");
+    handleUserMessage(text);
     input.value = "";
-    window.setTimeout(function () {
-      addMessage(botReply(text), "bot");
-    }, 250);
+  });
+
+  quick.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("sn-quick-btn")) return;
+    var text = e.target.textContent || "";
+    if (!text) return;
+    handleUserMessage(text);
   });
 
   addMessage(
