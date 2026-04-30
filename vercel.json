@@ -36,6 +36,14 @@
     {
       "source": "/private-parties/",
       "destination": "/private-parties/index.html"
+    },
+    {
+      "source": "/gallery",
+      "destination": "/gallery/index.html"
+    },
+    {
+      "source": "/gallery/",
+      "destination": "/gallery/index.html"
     }
   ]
 }
