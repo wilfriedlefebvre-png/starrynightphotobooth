@@ -1,0 +1,117 @@
+#sn-chatbot-root {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 9999;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+#sn-chat-toggle {
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 999px;
+  background: #12253d;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+#sn-chat-panel {
+  width: min(360px, calc(100vw - 1.5rem));
+  height: min(520px, calc(100vh - 6rem));
+  margin-bottom: 0.75rem;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#sn-chat-panel[hidden] {
+  display: none;
+}
+
+.sn-chat-header {
+  background: #12253d;
+  color: #fff;
+  padding: 0.75rem 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sn-chat-close {
+  background: transparent;
+  color: #fff;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.sn-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.8rem;
+  background: #f7f8fb;
+}
+
+.sn-chat-row {
+  margin-bottom: 0.6rem;
+  display: flex;
+}
+
+.sn-chat-row.user {
+  justify-content: flex-end;
+}
+
+.sn-chat-bubble {
+  max-width: 85%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 12px;
+  line-height: 1.35;
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+}
+
+.sn-chat-row.bot .sn-chat-bubble {
+  background: #e9eef6;
+  color: #1a1a1a;
+}
+
+.sn-chat-row.user .sn-chat-bubble {
+  background: #12253d;
+  color: #fff;
+}
+
+.sn-chat-form {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid #eee;
+  padding: 0.65rem;
+  background: #fff;
+}
+
+.sn-chat-input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 9px;
+  padding: 0.55rem 0.65rem;
+  font-size: 16px;
+}
+
+.sn-chat-send {
+  border: 0;
+  border-radius: 9px;
+  padding: 0.55rem 0.8rem;
+  background: #12253d;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
