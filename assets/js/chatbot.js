@@ -33,6 +33,7 @@
   var input = document.getElementById("sn-chat-input");
   var messages = document.getElementById("sn-chat-messages");
   var quick = document.getElementById("sn-chat-quick");
+  var pendingReply = false;
 
   function addMessage(text, who) {
     var row = document.createElement("div");
@@ -43,6 +44,23 @@
     row.appendChild(bubble);
     messages.appendChild(row);
     messages.scrollTop = messages.scrollHeight;
+  }
+
+  function addTyping() {
+    var row = document.createElement("div");
+    row.className = "sn-chat-row bot";
+    row.id = "sn-chat-typing";
+    var bubble = document.createElement("div");
+    bubble.className = "sn-chat-bubble sn-chat-typing";
+    bubble.textContent = "Typing...";
+    row.appendChild(bubble);
+    messages.appendChild(row);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function removeTyping() {
+    var typing = document.getElementById("sn-chat-typing");
+    if (typing) typing.remove();
   }
 
   function botReply(text) {
@@ -83,10 +101,24 @@
   }
 
   function handleUserMessage(text) {
+    if (pendingReply) return;
+    pendingReply = true;
+    setQuickButtonsDisabled(true);
     addMessage(text, "user");
+    addTyping();
     window.setTimeout(function () {
+      removeTyping();
       addMessage(botReply(text), "bot");
-    }, 250);
+      pendingReply = false;
+      setQuickButtonsDisabled(false);
+    }, 350);
+  }
+
+  function setQuickButtonsDisabled(disabled) {
+    var buttons = quick.querySelectorAll(".sn-quick-btn");
+    buttons.forEach(function (btn) {
+      btn.disabled = disabled;
+    });
   }
 
   toggle.addEventListener("click", openChat);
@@ -104,6 +136,7 @@
     if (!e.target.classList.contains("sn-quick-btn")) return;
     var text = e.target.textContent || "";
     if (!text) return;
+    input.value = "";
     handleUserMessage(text);
   });
 
