@@ -12,6 +12,14 @@
     {
       "source": "/about/",
       "destination": "/about/index.html"
+    },
+    {
+      "source": "/weddings",
+      "destination": "/weddings/index.html"
+    },
+    {
+      "source": "/weddings/",
+      "destination": "/weddings/index.html"
     }
   ]
 }
