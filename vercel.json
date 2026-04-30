@@ -20,6 +20,14 @@
     {
       "source": "/weddings/",
       "destination": "/weddings/index.html"
+    },
+    {
+      "source": "/company-events",
+      "destination": "/company-events/index.html"
+    },
+    {
+      "source": "/company-events/",
+      "destination": "/company-events/index.html"
     }
   ]
 }
