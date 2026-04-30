@@ -1,0 +1,43 @@
+/* Cross-page mobile usability and rendering safeguards */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+@media (max-width: 47.999rem) {
+  /* Improve touch targets for key interactive elements */
+  a,
+  button,
+  .cs-button-solid,
+  .cs-button-border,
+  .cs-li-link,
+  .cs-nav-link,
+  .cs-social-link,
+  .cs-btn {
+    min-height: 44px;
+  }
+
+  /* Prevent iOS zoom-on-focus and improve form readability */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .cs-input,
+  .cs-btn {
+    min-height: 44px;
+  }
+
+  /* Reduce text overflow on narrow screens */
+  p,
+  .cs-text,
+  .cs-item-text,
+  .cs-review {
+    overflow-wrap: anywhere;
+  }
+}
